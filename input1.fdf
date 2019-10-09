@@ -1,0 +1,47 @@
+SystemName         H irradiaiton on graphene/graphene heterostructures 
+#SystemType         Bulk
+SystemLabel        tgra_h
+NumberOfAtoms      65
+NumberOfSpecies    2
+
+%block ChemicalSpeciesLabel
+ 1    6   C      # Species index, atomic number, species label
+ 2    1   H
+%endblock ChemicalSpeciesLabel
+
+LatticeConstant   1.0  Ang
+
+MD.UseSaveXV  T
+
+MaxSCFIterations       100
+DM.MixingWeight        0.2
+DM.NumberPulay           3
+DM.Tolerance         1.d-4
+MeshCutoff           100.0  Ry 
+SolutionMethod       Diagon
+Diag.DivideAndConquer false
+SpinPolarized
+TDED.WF.Initialize
+
+PAO.BasisSize DZP (for SZ test, SZ)
+
+xc.functional         GGA           # Exchange-correlation functional
+xc.authors            PBE           # Exchange-correlation version
+
+%block kgrid_Monkhorst_Pack
+5 0 0 0.0
+0 5 0 0.0
+0 0 1 0.0
+%endblock kgrid_Monkhorst_Pack
+
+%block LatticeVectors
+ 9.83804893     0.00000000     0.00000000
+-4.91902447     8.52000030     0.00000000
+ 0.00000000     0.00000000    35.00000000
+%endblock LatticeVectors
+
+AtomicCoordinatesFormat Ang
+
+%block AtomicCoordinatesAndAtomicSpecies
+omitted
+%endblock AtomicCoordinatesAndAtomicSpecies
